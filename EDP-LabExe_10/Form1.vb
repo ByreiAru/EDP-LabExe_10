@@ -55,7 +55,7 @@ Public Class Form1
             MessageBox.Show("File not found! Please save numbers first.")
         End If
     End Sub
-
+    '======================================================================================================
     Private Sub ButtonClear_Click(sender As Object, e As EventArgs) Handles ButtonClear.Click
         ListBoxNumbers.Items.Clear()
     End Sub
