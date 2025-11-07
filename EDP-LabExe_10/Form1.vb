@@ -21,7 +21,7 @@ Public Class Form1
 
         If ListBoxNumbers.Items.Count > 0 Then
             Using writer As New StreamWriter(filePath)
-                ListBoxNumbers.Items.Cast(Of Integer)().ToList().ForEach(Sub(num) writer.Write(num & " "))
+                ListBoxNumbers.Items.Cast(Of Object)().Select(Function(x) x.ToString()).ToList().ForEach(Sub(num) writer.Write(num & " "))
             End Using
             ListBoxNumbers.Items.Clear()
             MessageBox.Show("Numbers saved to " & filePath)
@@ -35,18 +35,28 @@ Public Class Form1
 
         If File.Exists(filePath) Then
             ListBoxNumbers.Items.Clear()
+            Dim line As String
             Using reader As New StreamReader(filePath)
-                Dim line As String = reader.ReadLine()
-                If Not String.IsNullOrEmpty(line) Then
-                    Dim parts() As String = line.Split(" "c)
-                    Dim numberList = parts.Where(Function(p) p.Trim() <> "").Select(Function(p) Integer.Parse(p)).OrderBy(Function(x) x)
-                    numberList.ToList().ForEach(Sub(num) ListBoxNumbers.Items.Add(num))
-                End If
+                line = reader.ReadLine()
             End Using
+
+            If Not String.IsNullOrEmpty(line) Then
+                Dim parts() As String = line.Split(" "c)
+                Dim numberList = parts.Where(Function(p) p.Trim() <> "").Select(Function(p) Integer.Parse(p)).OrderBy(Function(x) x).ToList()
+                numberList.ToList().ForEach(Sub(num) ListBoxNumbers.Items.Add(num))
+
+                Using writer As New StreamWriter(filePath, False)
+                    numberList = numberList.ToList() : numberList.ForEach(Sub(num) writer.Write(num & " "))
+                End Using
+            End If
 
             MessageBox.Show("Numbers loaded successfully!")
         Else
             MessageBox.Show("File not found! Please save numbers first.")
         End If
+    End Sub
+
+    Private Sub ButtonClear_Click(sender As Object, e As EventArgs) Handles ButtonClear.Click
+        ListBoxNumbers.Items.Clear()
     End Sub
 End Class

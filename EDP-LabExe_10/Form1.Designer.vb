@@ -29,6 +29,7 @@ Partial Class Form1
         Me.TextBoxNumberInput = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ListBoxNumbers = New System.Windows.Forms.ListBox()
+        Me.ButtonClear = New System.Windows.Forms.Button()
         Me.TableLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -44,6 +45,7 @@ Partial Class Form1
         Me.TableLayoutPanel.Controls.Add(Me.TextBoxNumberInput, 0, 1)
         Me.TableLayoutPanel.Controls.Add(Me.Label1, 0, 0)
         Me.TableLayoutPanel.Controls.Add(Me.ListBoxNumbers, 2, 0)
+        Me.TableLayoutPanel.Controls.Add(Me.ButtonClear, 1, 1)
         Me.TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel.Name = "TableLayoutPanel"
@@ -51,6 +53,7 @@ Partial Class Form1
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel.Size = New System.Drawing.Size(800, 450)
         Me.TableLayoutPanel.TabIndex = 0
         '
@@ -87,11 +90,10 @@ Partial Class Form1
         '
         'TextBoxNumberInput
         '
-        Me.TableLayoutPanel.SetColumnSpan(Me.TextBoxNumberInput, 2)
         Me.TextBoxNumberInput.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TextBoxNumberInput.Location = New System.Drawing.Point(3, 153)
         Me.TextBoxNumberInput.Name = "TextBoxNumberInput"
-        Me.TextBoxNumberInput.Size = New System.Drawing.Size(526, 20)
+        Me.TextBoxNumberInput.Size = New System.Drawing.Size(260, 20)
         Me.TextBoxNumberInput.TabIndex = 0
         '
         'Label1
@@ -117,6 +119,16 @@ Partial Class Form1
         Me.ListBoxNumbers.Size = New System.Drawing.Size(262, 444)
         Me.ListBoxNumbers.TabIndex = 6
         '
+        'ButtonClear
+        '
+        Me.ButtonClear.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ButtonClear.Location = New System.Drawing.Point(269, 153)
+        Me.ButtonClear.Name = "ButtonClear"
+        Me.ButtonClear.Size = New System.Drawing.Size(260, 144)
+        Me.ButtonClear.TabIndex = 7
+        Me.ButtonClear.Text = "Clear"
+        Me.ButtonClear.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -138,4 +150,5 @@ Partial Class Form1
     Friend WithEvents ButtonRead As Button
     Friend WithEvents ButtonSave As Button
     Friend WithEvents ListBoxNumbers As ListBox
+    Friend WithEvents ButtonClear As Button
 End Class
